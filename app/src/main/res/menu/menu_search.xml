@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+ <item android:id="@+id/search"
+      android:title="@string/menu_search"
+      android:icon="@drawable/ic_search_white_48dp"
+      app:showAsAction="collapseActionView|always"
+      android:actionViewClass="android.widget.SearchView" />
+ 
+ <item
+        android:id="@+id/menu_overflow"
+        android:icon="@drawable/ic_more_vert_white_48dp"
+        app:showAsAction="always"
+        android:title="">
+      
+        <menu>
+            <!-- Refresh -->
+		    <item android:id="@+id/refresh"
+		          android:title="@string/refresh"
+		          app:showAsAction="ifRoom|withText"/>
+            
+            <!-- Favorite App -->
+		    <item android:id="@+id/menu_favorite"
+		          android:title="@string/menu_favorite"
+		          app:showAsAction="ifRoom|withText"/>
+        
+		    <!-- Rate App -->
+		    <item android:id="@+id/menu_rateapp"
+		          android:title="@string/menu_rateapp"
+		          app:showAsAction="ifRoom|withText"/>
+		    
+		    <!-- More App -->
+		    <item android:id="@+id/menu_moreapp"
+		          android:title="@string/menu_moreapp"
+		          app:showAsAction="ifRoom|withText"/>
+		    
+		    <!-- About -->
+		    <item android:id="@+id/menu_about"
+		          android:title="@string/menu_about"
+		          app:showAsAction="ifRoom|withText"/>
+        
+	  </menu>
+   </item>
+   
+</menu>

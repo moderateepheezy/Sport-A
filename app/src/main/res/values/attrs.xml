@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="RoundedImageView">
+    <attr name="corner_radius" format="dimension" />
+    <attr name="border_width" format="dimension" />
+    <attr name="border_color" format="color" />
+    <attr name="round_background" format="boolean" />
+    <attr name="is_oval" format="boolean" />
+    <attr name="android:scaleType" />
+  </declare-styleable>
+
+    <!--Scrim insets vie that allows the drawer the be behind the status bar and visible -->
+    <declare-styleable name="ScrimInsetsView">
+        <attr name="insetForeground" format="reference|color" />
+    </declare-styleable>
+
+    <!-- ColorState to be used in the TinOnImageView view -->
+    <declare-styleable name="TintOnStateImageView">
+    <attr name="colorStateList" format="reference|color" />
+    </declare-styleable>
+</resources>

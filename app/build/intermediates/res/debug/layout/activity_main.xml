@@ -1,0 +1,4 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/containeor"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    tools:context=".MainActivity" tools:ignore="MergeRootFrame" /><!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/layout/activity_main.xml -->

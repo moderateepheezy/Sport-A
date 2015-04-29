@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background_color"
+    android:gravity="center" >
+
+    <ListView
+        android:id="@+id/lsv_latest"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/adView"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="1dp" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:textColor="#ffffff"
+        android:shadowRadius="15"
+        android:background="@drawable/pressing_custom"
+        android:text="New Status"/>
+
+</RelativeLayout><!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/layout/activity_wall.xml -->

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="com.news.app.NewsActivity">
+
+    <item android:id="@+id/bact_btn"
+        android:title="Back"
+        android:icon="@drawable/ic_arrow_back_white_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+</menu><!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/menu/main.xml -->

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-3a312383c7ee3700882f2e289b8962d6d31e4c25.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-33c598decbb2fe6026281cf37e2148767af67f31.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-1ae8e5ca7baf75591460b8bdc4b4d352f82f873a.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-ae3583080cdab1ead41d8e975d9125bbc6245ed3.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-944d6d656187bd9bd23070a4e0924f60a340e8d7.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c6d79137693d494dee16372d3921f919eb724ced">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-360af897f572bc639300273e981cf121bce8c61b.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-a69094e18133a92324d07564aa4b62d11e4423a3.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-e26db750f3e1c2f2b7db91a0aa1a8cf24fd78ae5.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-f81ee9b48783b62532e2d92a595a013c0daaddf7.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/Android News App/materialDrawer/1.1.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="76e45e8fa2b3f14f2defca8cc4eeb0cbc9d43e63">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-472eef042d2b179a9cfb85f4db688dba0cc8abf1.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-c41706d2e4ef96dd0ed485d006938b1ab18acf72.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-6b2e941e61e54f03cf44446bcdc84a4a99067daa.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-e25db4691372869fa2a46a8356dab87a94bbe285.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-9ce14940a28dda5e318c480864caea1b18448388.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-072fb71d6405701279ddcc1163a828b137cc915d.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-cc9015916d02564c8d07e2940f12d4faa912aefa.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-e2034eccedefc8e37ff90f81124c8abf3fda4e19.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/Documents/adt-bundle-linux-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-4172c4089ee81aa9db2b8230c6d9c221a5b1a030.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/libs/StartAppInAppPlus-2.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="90b260273a9300f1462ec4391d21001710e1eacf">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/StartAppInAppPlus-2.3-603e4460a466eeed6770c25e9cdc8f4c2918f1e4.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-7491a17f98641557e60c78c7955eedb1bc53c4df.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-d790b87d5592346b88c64279411f3d6a0e91fe40.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-40a4b1ae6dc2ae55b0304e0f703970c9854a82d3.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-ac1ea4def482726415af5e2510997c752eee72b3.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-cbeb44f5e7f5268b1d8791cca5e46c887724d226.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/library-2.4.0-67d23bf63415347742097ec43f9ffb28763ae9e1.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-6b7f053676063c0582bf4aea2fd5ef9ec67642c6.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-b5dd8bce770437922f603d03630ed73300919a3d.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/libs/Parse-1.3.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0134925989cd90163c416e94383b1b8ee88d02e2">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/Parse-1.3.0-5b138f9e4326ed9e28c5ed7d209f8fcad270690c.jar" />
+    </item>
+    <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/Android News App/restclient/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9b20edbb2198cb7975bf03cf88636760a2e1b1f6">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-c3ca95d18f1617dab992261035555c2f56988fa0.jar" />
+    </item>
+
+</items>

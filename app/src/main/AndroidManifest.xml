@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.news.app"
+    android:versionCode="2"
+    android:versionName="1.2" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo_ap"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+        <activity
+            android:name=".Splash"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+        <activity
+            android:name=".MainActivity3"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        -->
+        <activity
+            android:name=".News_All_List"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:icon="@drawable/ic_arrow_back_white_24dp" >
+        </activity>
+        <activity
+            android:name=".News_Detail"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:icon="@drawable/ic_arrow_back_white_24dp" >
+        </activity>
+        <activity
+            android:name=".com.sport.app.fragments.OneHeadItemBelowToolbar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:icon="@drawable/ic_arrow_back_white_24dp" >
+        </activity>
+        <!--
+        <activity
+            android:name=".ParseApplication"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/ic_arrow_back_white_24dp" >
+        </activity>
+        -->
+        <activity
+            android:name=".About_Us"
+            android:icon="@drawable/ic_arrow_back_white_24dp"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".News_Favorite"
+            android:icon="@drawable/ic_arrow_back_white_24dp"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity
+            android:name="com.startapp.android.publish.list3d.List3DActivity"
+            android:taskAffinity="com.news.app.AppWall"
+            android:theme="@android:style/Theme" />
+        <activity
+            android:name="com.startapp.android.publish.AppWallActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:taskAffinity="com.news.app.AppWall"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <service android:name="com.parse.PushService" />
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".NewsActivity"
+            android:label="@string/title_activity_news" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActiviy" />
+        </activity>
+        <activity
+            android:name=".Subscribe"
+            android:label="@string/title_activity_subscribe" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActiviy" />
+        </activity>
+        <activity
+            android:name=".ChatActivity"
+            android:label="@string/title_activity_chat" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActiviy" />
+        </activity>
+        <activity
+            android:name=".WallActivity"
+            android:label="@string/title_activity_wall"
+            android:parentActivityName=".MainActiviy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActiviy" />
+        </activity>
+        <activity
+            android:name=".MainActiviy"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LiveScoreActivity"
+            android:label="@string/title_activity_live_score"
+            android:parentActivityName=".MainActiviy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.news.app.MainActiviy" />
+        </activity>
+    </application>
+
+</manifest>
