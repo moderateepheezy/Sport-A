@@ -60,7 +60,7 @@ public class Adapter_All_News_List extends ArrayAdapter<ItemNewsList>{
 			holder.txt_newsheading.setText(objnewslistBean.getNewsHeading().toString());
 			holder.txt_newsdate.setText(objnewslistBean.getNewsDate().toString());
 
-			imageLoader.DisplayImage(Constant.SERVER_IMAGE_NEWSLIST_THUMBS+objnewslistBean.getNewsImage().toString(), holder.img_news);
+			imageLoader.DisplayImage(Constant.SERVER_IMAGE_NEWSLISTDETAILS+objnewslistBean.getNewsImage().toString(), holder.img_news);
 			
 			return view;
 			 

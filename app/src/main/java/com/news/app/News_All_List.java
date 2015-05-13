@@ -64,7 +64,7 @@ public class News_All_List extends Activity {
 		getActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
 		getActionBar().setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
 
-		setTitle(Constant.CATEGORY_TITLE);
+		//setTitle(Constant.CATEGORY_TITLE);
 		
 		lsv_cat=(ListView)findViewById(R.id.lsv_cat_item);
 
@@ -95,7 +95,7 @@ public class News_All_List extends Activity {
 
 
 		if (JsonUtils.isNetworkAvailable(News_All_List.this)) {
-			new MyTask().execute(Constant.CATEGORY_ITEM_URL+Constant.CATEGORY_IDD);
+			//new MyTask().execute(Constant.CATEGORY_ITEM_URL+Constant.CATEGORY_IDD);
 		} else {
 			showToast("No Network Connection!!!");
 			alert.showAlertDialog(News_All_List.this, "Internet Connection Error",

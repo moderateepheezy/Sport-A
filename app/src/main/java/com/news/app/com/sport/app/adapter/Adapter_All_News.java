@@ -54,8 +54,8 @@ public class Adapter_All_News extends ArrayAdapter<ItemAllNews> {
 
 		objAllBean = itemsAllnews.get(position);
 		
-		holder.txt=(TextView)view.findViewById(R.id.txt_allnews_categty);
-		holder.img_cat=(ImageView)view.findViewById(R.id.img_cat);
+		/*holder.txt=(TextView)view.findViewById(R.id.txt_allnews_categty);
+		holder.img_cat=(ImageView)view.findViewById(R.id.img_cat)*/
 		holder.txt.setText(objAllBean.getCategoryName().toString());
 
 		imageLoader.DisplayImage(Constant.SERVER_IMAGE_CATEGORY+objAllBean.getCategoryImageurl().toString(), holder.img_cat);

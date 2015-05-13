@@ -1,20 +1,22 @@
 package com.news.app;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,16 +27,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdView;
+import com.news.app.com.sport.app.NotificationView;
 import com.news.app.com.sport.app.model.ItemAllNews;
-import com.news.app.com.sport.app.utilities.Constant;
 import com.news.app.com.sport.app.utilities.ImageLoader;
 import com.startapp.android.publish.StartAppAd;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActiviy extends ActionBarActivity {
@@ -49,17 +52,15 @@ public class MainActiviy extends ActionBarActivity {
     private StartAppAd startAppAd = new StartAppAd(this);
     private ActionBar bar;
 
+    private NotificationManager mNotificationManager;
+    private int notificationID = 100;
+    private int numMessages = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         StartAppAd.init(this, getString(R.string.startapp_dev_id), getString(R.string.startapp_app_id));
         setContentView(R.layout.activity_main_activiy);
-
-        /*bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
-        bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
-        bar.setHomeButtonEnabled(true);
-        getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));*/
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -68,7 +69,8 @@ public class MainActiviy extends ActionBarActivity {
         }
 
 
-        mDrawerList = (ListView)findViewById(R.id.navList);mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView)findViewById(R.id.navList);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
 
         addDrawerItems();
@@ -76,6 +78,67 @@ public class MainActiviy extends ActionBarActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        //Declare the timer
+        Timer t = new Timer();
+//Set the schedule function and rate
+        t.scheduleAtFixedRate(new TimerTask() {
+
+                                  @Override
+                                  public void run() {
+                                      runOnUiThread(new Runnable() {
+
+                                          @Override
+                                          public void run() {
+                                              displayNotification();
+                                          }
+
+                                      });
+                                  }
+
+                              },
+//Set how long before to start calling the TimerTask (in milliseconds)
+                0,
+//Set the amount of time between each execution (in milliseconds)
+                50000);
+    }
+
+    protected void displayNotification() {
+        Log.i("Start", "notification");
+
+      /* Invoking the default notification service */
+        NotificationCompat.Builder  mBuilder =
+                new NotificationCompat.Builder(this);
+
+        mBuilder.setContentTitle("SportApp News");
+        mBuilder.setContentText("There are new sport update on SportApp. Click now!");
+        mBuilder.setTicker("New Message Alert!");
+        mBuilder.setSmallIcon(R.drawable.ic_logo_ap);
+
+      /* Increase notification number every time a new notification arrives */
+        mBuilder.setNumber(++numMessages);
+
+      /* Creates an explicit intent for an Activity in your app */
+        Intent resultIntent = new Intent(this, NewsActivity.class);
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(NotificationView.class);
+
+      /* Adds the Intent that starts the Activity to the top of the stack */
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(
+                        0,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+      /* notificationID allows you to update the notification later on. */
+        mNotificationManager.notify(notificationID, mBuilder.build());
     }
 
     private void addDrawerItems() {
@@ -86,7 +149,6 @@ public class MainActiviy extends ActionBarActivity {
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActiviy.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
                 Fragment fragment = null;
                 switch (position){
                     case 0:
@@ -97,7 +159,8 @@ public class MainActiviy extends ActionBarActivity {
                         startActivity(i);
                         break;
                     case 2:
-                        fragment = new ChatActivity();
+                        Intent o = new Intent(getApplicationContext(), ChatActivity.class);
+                        startActivity(o);
                         break;
                     case 3:
                         Intent x = new Intent(getApplicationContext(), Subscribe.class);
@@ -107,6 +170,10 @@ public class MainActiviy extends ActionBarActivity {
                         Intent l = new Intent(getApplicationContext(), LiveScoreActivity.class);
                         startActivity(l);
                         break;
+                    case 5:
+                        Intent r = new Intent(getApplicationContext(), FAQS.class);
+                        startActivity(r);
+                        break;
                 }
                 if(fragment != null){
                     FragmentManager fm = getSupportFragmentManager();
@@ -114,6 +181,7 @@ public class MainActiviy extends ActionBarActivity {
                     fragmentTransaction.replace(R.id.container, fragment);
                     fragmentTransaction.commit();
                 }
+                mDrawerLayout.closeDrawers();
             }
         });
     }
@@ -124,7 +192,6 @@ public class MainActiviy extends ActionBarActivity {
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Navigation!");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
@@ -160,7 +227,8 @@ public class MainActiviy extends ActionBarActivity {
         items.add(new NavigationItem("Sport Chat", R.drawable.nav_chat));
         items.add(new NavigationItem("Subscribe", R.drawable.nav2));
         items.add(new NavigationItem("Live Scores", R.drawable.score));
-        items.add(new NavigationItem("FAQS", R.drawable.faqs));
+        items.add(new NavigationItem("Game", R.drawable.game));
+        items.add(new NavigationItem("FAQS", R.drawable.faqi));
         return items;
     }
 

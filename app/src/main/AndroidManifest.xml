@@ -30,11 +30,14 @@
         <activity
             android:name=".Splash"
             android:label="@string/app_name" >
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <!--
         <activity
@@ -108,7 +111,7 @@
 
         <activity
             android:name=".NewsActivity"
-            android:label="@string/title_activity_news" >
+            android:label="EPL" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActiviy" />
@@ -139,6 +142,10 @@
             android:name=".MainActiviy"
             android:configChanges="orientation|keyboardHidden|screenSize" >
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.SEARCH" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -151,6 +158,38 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.news.app.MainActiviy" />
+        </activity>
+        <activity
+            android:name=".FAQS"
+            android:label="@string/title_activity_faqs"
+            android:parentActivityName=".MainActiviy" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.news.app.MainActiviy" />
+        </activity>
+        <activity
+            android:name=".Chat"
+            android:label="Chat"
+            android:parentActivityName=".ChatActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.news.app.ChatActivity" />
+        </activity>
+        <activity
+            android:name=".Details"
+            android:label="@string/title_activity_details"
+            android:parentActivityName=".NewsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.news.app.NewsActivity" />
+        </activity>
+        <activity
+            android:name=".com.sport.app.NotificationView"
+            android:label="@string/title_activity_notification_view" >
+        </activity>
+        <activity
+            android:name=".com.sport.app.Game"
+            android:label="@string/title_activity_game" >
         </activity>
     </application>
 

@@ -1,17 +1,35 @@
 package com.news.app;
 
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.TableLayout;
+
+import com.news.app.com.sport.app.adapter.LiveScoreAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LiveScoreActivity extends ActionBarActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_score);
+
+        List<String> headers = new ArrayList<>();
+        headers.add("England");
+        headers.add("La liga");
+        headers.add("Italy");
+
+        Resources res = getResources();
+        ListView listView = (ListView)findViewById(R.id.lsv_livescore);
+        listView.setAdapter(new LiveScoreAdapter(this, res, headers));
     }
 
 

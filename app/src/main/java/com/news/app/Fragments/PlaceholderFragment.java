@@ -1,11 +1,13 @@
 package com.news.app.Fragments;
 
-import android.app.ProgressDialog;
+
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,11 +15,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.news.app.About_Us;
+import com.news.app.Chat;
 import com.news.app.com.sport.app.adapter.Adapter_All_News_List;
 import com.news.app.com.sport.app.utilities.AlertDialogManager;
 import com.news.app.com.sport.app.utilities.Constant;
@@ -35,12 +41,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.erikw.PullToRefreshListView;
+
 /**
  * Created by simpumind on 4/24/15.
  */
 public  class PlaceholderFragment extends Fragment {
 
-    ListView lsv_cat;
+    PullToRefreshListView lsv_cat;
     List<ItemNewsList> arrayOfNewsList;
     Adapter_All_News_List objAdapter;
     AlertDialogManager alert = new AlertDialogManager();
@@ -52,6 +60,9 @@ public  class PlaceholderFragment extends Fragment {
     private int columnWidth;
     JsonUtils util;
     int textlength = 0;
+    static ProgressBar pDialog;
+
+    RelativeLayout layout;
    // private AdView mAdView;
     /**
      * The fragment argument representing the section number for this
@@ -68,6 +79,7 @@ public  class PlaceholderFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
+
     public static PlaceholderFragment newInstance(int sectionNumber) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle args = new Bundle();
@@ -79,19 +91,37 @@ public  class PlaceholderFragment extends Fragment {
     public PlaceholderFragment() {
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         StartAppAd.init(getActivity(), getString(R.string.startapp_dev_id), getString(R.string.startapp_app_id));
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
+        //getActivity().setTitle("EPL");
         StartAppAd.showSlider(getActivity());
         //mAdView = (AdView)rootView.findViewById(R.id.adView);
 //        mAdView.loadAd(new AdRequest.Builder().build());
 
-        getActivity().setTitle("ELP");
+        layout = (RelativeLayout)rootView.findViewById(R.id.layout);
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            layout.setBackgroundDrawable( getResources().getDrawable(R.drawable.premier_league) );
+        } else {
+            layout.setBackground( getResources().getDrawable(R.drawable.premier_league));
+        }
 
 
-        lsv_cat=(ListView)rootView.findViewById(R.id.lsv_latest);
+        /*TextView group_name = (TextView)rootView.findViewById(R.id.group);
+        group_name.setText("GO TO CHAT");
+
+        group_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Chat.class);
+                startActivity(intent);
+            }
+        });*/
+
 
         arrayOfNewsList=new ArrayList<ItemNewsList>();
         allListnews=new ArrayList<String>();
@@ -119,13 +149,27 @@ public  class PlaceholderFragment extends Fragment {
         util=new JsonUtils(getActivity());
 
 
-        if (JsonUtils.isNetworkAvailable(getActivity())) {
-            new MyTask().execute(Constant.CATEGORY_ITEM_URL+7);
-        } else {
-            showToast("No Network Connection!!!");
-            alert.showAlertDialog(getActivity(), "Internet Connection Error",
-                    "Please connect to working Internet connection", false);
-        }
+        networkCall();
+         lsv_cat = (PullToRefreshListView)rootView.findViewById(R.id.lsv_latest);
+        lsv_cat.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list contents
+
+                // ...
+
+                // Make sure you call listView.onRefreshComplete()
+                // when the loading is done. This can be done from here or any
+                // other place, like on a broadcast receive from your loading
+                // service or the onPostExecute of your AsyncTask.
+                arrayOfNewsList.clear();
+                networkCall();
+                lsv_cat.onRefreshComplete();
+            }
+        });
+
+
 
         lsv_cat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -133,7 +177,9 @@ public  class PlaceholderFragment extends Fragment {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,
                                     long arg3) {
                 // TODO Auto-generated method stub
-
+                if(position == 0){
+                    Log.e("Position", ""+position);
+                }
                 objAllBean=arrayOfNewsList.get(position);
                 int pos=Integer.parseInt(objAllBean.getCatId());
 
@@ -151,20 +197,29 @@ public  class PlaceholderFragment extends Fragment {
                 startActivity(intplay);
             }
         });
+        pDialog = (ProgressBar)rootView.findViewById(R.id.progressBar);
         return rootView;
     }
+
+    private void networkCall() {
+        if (JsonUtils.isNetworkAvailable(getActivity())) {
+            new MyTask().execute(Constant.CATEGORY_ITEM_URL+7);
+        } else {
+            showToast("No Network Connection!!!");
+            alert.showAlertDialog(getActivity(), "Internet Connection Error",
+                    "Please connect to working Internet connection", false);
+        }
+    }
+
     private	class MyTask extends AsyncTask<String, Void, String> {
 
-        ProgressDialog pDialog;
+
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Loading...");
-            pDialog.setCancelable(false);
-            pDialog.show();
+            ;
         }
 
         @Override
@@ -176,8 +231,9 @@ public  class PlaceholderFragment extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (null != pDialog && pDialog.isShowing()) {
-                pDialog.dismiss();
+
+            if (null != pDialog && pDialog.isShown()) {
+                pDialog.setVisibility(View.GONE);
             }
 
             if (null == result || result.length() == 0) {
@@ -251,9 +307,14 @@ public  class PlaceholderFragment extends Fragment {
 
 
     public void setAdapterToListview() {
-        objAdapter = new Adapter_All_News_List(getActivity(), R.layout.lsv_item_news_list,
-                arrayOfNewsList,columnWidth);
-        lsv_cat.setAdapter(objAdapter);
+      //  if(objAdapter != null){
+            objAdapter = new Adapter_All_News_List(getActivity(), R.layout.lsv_item_news_list,
+                    arrayOfNewsList, columnWidth);
+            lsv_cat.setAdapter(objAdapter);
+      /*//  }
+        else {
+            showToast("No news update");
+        }*/
     }
 
     public void showToast(String msg) {

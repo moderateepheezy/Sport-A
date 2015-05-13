@@ -2,12 +2,12 @@
 <resources>
 
     <string-array name="image_ids">
-        <item>@drawable/wall</item>
-        <item>@drawable/news</item>
-        <item>@drawable/livescore</item>
-        <item>@drawable/chat</item>
+        <item>@drawable/newsing</item>
+        <item>@drawable/livescores</item>
+        <item>@drawable/chating</item>
         <item>@drawable/faqs</item>
-        <item>@drawable/subcribe</item>
+        <item>@drawable/game</item>
+        <item>@drawable/sub</item>
     </string-array>
 
     <!-- General -->
@@ -34,11 +34,11 @@
     <string name="typeface_roboto_regular">Roboto-Regular</string>
     <string name="typeface_roboto_medium">Roboto-Medium</string>
     <string-array name="image_names">
-        <item>Yello Wall</item>
         <item>News</item>
         <item>Live Score</item>
         <item>Sport Chat</item>
         <item>FAQS</item>
+        <item>Game</item>
         <item>Subscribe</item>
     </string-array>
     <string name="app_name">Sport News App</string>
@@ -108,7 +108,7 @@
     <string name="title_section4">Horse Race</string>
     <string name="title_section5">Laliga</string>
     <string name="title_activity_subscribe">Subscribe</string>
-    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_chat">Chat Room</string>
     <string name="title_activity_wall">WallActivity</string>
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="drawer_open">Menu opened</string>
@@ -116,5 +116,10 @@
     <string name="title_activity_activiti">Activiti</string>
     <string name="title_activity_main_activiy">MainActiviy</string>
     <string name="title_activity_live_score">Live Score</string>
+    <string name="title_activity_blan">Blan</string>
+    <string name="title_activity_faqs">FAQS</string>
+    <string name="title_activity_details">Details</string>
+    <string name="title_activity_notification_view">Sport ChatNotification</string>
+    <string name="title_activity_game">Game</string>
     
 </resources>

@@ -3,19 +3,19 @@
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="image_ids">
-        <item>@drawable/wall</item>
-        <item>@drawable/news</item>
-        <item>@drawable/livescore</item>
-        <item>@drawable/chat</item>
+        <item>@drawable/newsing</item>
+        <item>@drawable/livescores</item>
+        <item>@drawable/chating</item>
         <item>@drawable/faqs</item>
-        <item>@drawable/subcribe</item>
+        <item>@drawable/game</item>
+        <item>@drawable/sub</item>
     </string-array>
     <string-array name="image_names">
-        <item>Yello Wall</item>
         <item>News</item>
         <item>Live Score</item>
         <item>Sport Chat</item>
         <item>FAQS</item>
+        <item>Game</item>
         <item>Subscribe</item>
     </string-array>
     <array name="nav_drawer_icons">
@@ -53,7 +53,7 @@
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="amber_500">#ffc107</color>
-    <color name="background_color">#f2f2f2</color>
+    <color name="background_color">#ffffff</color>
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>
@@ -493,6 +493,14 @@ available. Please contact the developer for assistance.</string>
     <string name="parse_application_id">dLgWa68vIY8rLPXC28EJNBP0L2mWtLlBKv0tsTtO</string>
     <string name="parse_client_key">VaprOvExGGNNxNGWinSwB44AEotcCVyVqtza95YC</string>
     <string name="play_more_apps">https://play.google.com/store/search?q=solodroid+application</string>
+    <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/build/intermediates/exploded-aar/Android%20News%20App/libraryproject/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="ptr_last_updated">Updated: %1$s</string>
+    <string name="ptr_pull_to_refresh">Pull to refresh</string>
+    <string name="ptr_refreshing">Refreshing…</string>
+    <string name="ptr_release_to_refresh">Release to refresh</string>
+    <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="refresh">Refresh</string>
     <string name="search_hint">Hint</string>
     <string name="startapp_app_id">207007053</string>
@@ -506,11 +514,16 @@ available. Please contact the developer for assistance.</string>
     <string name="tag_nav_drawer_main_entry">nav_drawer_main_entry</string>
     <string name="tag_nav_drawer_special_entry">nav_drawer_special_entry</string>
     <string name="title_activity_activiti">Activiti</string>
-    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_blan">Blan</string>
+    <string name="title_activity_chat">Chat Room</string>
+    <string name="title_activity_details">Details</string>
+    <string name="title_activity_faqs">FAQS</string>
+    <string name="title_activity_game">Game</string>
     <string name="title_activity_live_score">Live Score</string>
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="title_activity_main_activiy">MainActiviy</string>
     <string name="title_activity_news">NewsActivity</string>
+    <string name="title_activity_notification_view">Sport ChatNotification</string>
     <string name="title_activity_subscribe">Subscribe</string>
     <string name="title_activity_wall">WallActivity</string>
     <string name="title_section1">ELP</string>
@@ -541,6 +554,7 @@ available. Please contact the developer for assistance.</string>
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:titleTextStyle">@style/MyTheme.MyActionBar.TitleTextStyle</item>
     </style>
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
@@ -1483,6 +1497,15 @@ available. Please contact the developer for assistance.</string>
     <style name="MyTheme.ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
     <item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>
   </style>
+    <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="MyTheme.MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:titleTextStyle">@style/MyTheme.MyActionBar.TitleTextStyle</item>
+    </style>
+    <style name="MyTheme.MyActionBar.TitleTextStyle" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">#81CFEB</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
@@ -1879,6 +1902,56 @@ available. Please contact the developer for assistance.</string>
     <style name="Widget.AppCompat.TextView.SpinnerItem" parent="Base.Widget.AppCompat.TextView.SpinnerItem"/>
     <style name="Widget.AppCompat.Toolbar" parent="Base.Widget.AppCompat.Toolbar"/>
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation"/>
+    <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/build/intermediates/exploded-aar/Android%20News%20App/libraryproject/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style name="ptr_arrow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:src">@drawable/ptr_pulltorefresh_arrow</item>
+        <item name="android:layout_marginLeft">25dp</item>
+    </style>
+    <style name="ptr_header">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="ptr_headerContainer">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0px</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+    <style name="ptr_last_updated" parent="ptr_text">
+        <item name="android:textStyle">normal</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:layout_below">@+id/ptr_id_text</item>
+    </style>
+    <style name="ptr_spinner" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:layout_marginLeft">25dp</item>
+    </style>
+    <style name="ptr_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="ptr_textwrapper">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/values/theme.xml -->
     <eat-comment/>
     <style name="tabtextcolor" parent="@android:style/Widget.ActionBar.TabText">

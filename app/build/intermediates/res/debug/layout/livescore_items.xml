@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+
+    <TableRow
+        android:id="@+id/tableRow"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <TextView
+            android:id="@+id/league_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textSize="18dp"
+            android:text="English Premier League"
+            android:gravity="right"
+            android:layout_span="2"></TextView>
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:textSize="15dp"
+            android:text="22 Apr"
+            android:layout_span="1"
+            android:layout_marginRight="5dp"
+            android:gravity="right"></TextView>
+    </TableRow>
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="FT"
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"></TextView>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Liverpool"
+                    android:id="@+id/local_team"
+                    android:layout_height="wrap_content"
+                    android:layout_span="1"
+                    android:gravity="right"></TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0000ff"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6"
+                        android:textSize="25dp"
+                        android:id="@+id/local_team_score"
+                        android:textColor="#ffffff"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textSize="20dp"
+                        android:paddingRight="5dp"
+                        android:paddingLeft="5dp"
+                        android:textColor="#ffffff"/>
+                    <TextView
+                        android:layout_below="@+id/header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7"
+                        android:textSize="25dp"
+                        android:id="@+id/visitor_team_score"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Barcelona"
+                    android:id="@+id/visitor_team"
+                    android:layout_height="wrap_content"
+                    android:layout_span="1"></TextView>
+            </LinearLayout>
+
+    </TableRow>
+    </TableLayout>
+<!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/layout/livescore_items.xml -->

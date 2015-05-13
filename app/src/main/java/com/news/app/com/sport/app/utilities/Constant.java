@@ -42,7 +42,7 @@ public class Constant implements Serializable{
     public static final String CATEGORY_ITEM_CID="cid";
     public static final String CATEGORY_ITEM_NAME="category_name";
     public static final String CATEGORY_ITEM_IMAGE="category_image";
-    public static final String CATEGORY_ITEM_STATUS="status";
+    public static final String  CATEGORY_ITEM_STATUS="status";
     public static final String CATEGORY_ITEM_CAT_ID="nid";
     public static final String CATEGORY_ITEM_NEWSHEADING="news_heading";
     public static final String CATEGORY_ITEM_NEWSDESCRI="news_description";
@@ -61,8 +61,8 @@ public class Constant implements Serializable{
 
 
     //for title display in CategoryItemF
-    public static String CATEGORY_TITLE;
-    public static int CATEGORY_IDD;
+    //public static String CATEGORY_TITLE;
+  //  public static int CATEGORY_IDD;
 
 
 

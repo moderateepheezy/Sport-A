@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -36,6 +37,18 @@ public class Subscribe extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_subscribe, menu);
         return true;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode){
+            case KeyEvent.KEYCODE_ESCAPE:
+                finish();
+                startActivity(getIntent());
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

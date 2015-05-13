@@ -1,0 +1,9 @@
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tr_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+
+
+</TableRow>
+<!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/layout/table_cell.xml -->

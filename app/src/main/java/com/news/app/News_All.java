@@ -20,6 +20,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.news.app.com.sport.app.Game;
 import com.news.app.com.sport.app.adapter.Adapter_Latest;
 import com.news.app.com.sport.app.adapter.GridViewAdapter;
 import com.news.app.com.sport.app.model.ItemAllNews;
@@ -58,43 +59,37 @@ public class News_All extends Fragment {
 
         lsv_allnews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Fragment fr = new Fragment();
+               // Fragment fr = new Fragment();
                 ItemAllNews item = (ItemAllNews) parent.getItemAtPosition(position);
                 // switch (item.getTitle().g)
-                if(item.getCategoryName().equals("Yello Wall")) {
-                    //Create intent
-                    /*Intent intent = new Intent(getActivity(), WallActivity.class);
-
-                    //Start details activity
-                    startActivity(intent);*/
-                    fr = new WallActivity();
-                }
                 if(item.getCategoryName().equals("Sport Chat")) {
                     //Create intent
-                    ///Intent intent = new Intent(getActivity(), ChatActivity.class);
+                    Intent intent = new Intent(getActivity(), ChatActivity.class);
 
                     //Start details activity
-                   // startActivity(intent);
-                    fr = new ChatActivity();
+                    startActivity(intent);
                 }
 
-
+                if(item.getCategoryName().equals("Game")){
+                    Intent x = new Intent(getActivity(), Game.class);
+                    startActivity(x);
+                }
 
 
                 if(item.getCategoryName().equals("Live Score")) {
                     //Create intent
-                   // Intent intent = new Intent(getActivity(), LiveScoreActivity.class);
+                    Intent intent = new Intent(getActivity(), LiveScoreActivity.class);
 
                     //Start details activity
-                   // startActivity(intent);
+                    startActivity(intent);
                 }
 
                 if(item.getCategoryName().equals("FAQS")) {
                     //Create intent
-                  //  Intent intent = new Intent(getActivity(), FaqsActivity.class);
+                    Intent intent = new Intent(getActivity(), FAQS.class);
 
                     //Start details activity
-                  //  startActivity(intent);
+                    startActivity(intent);
                 }
 
                 if(item.getCategoryName().equals("News")) {
@@ -112,10 +107,10 @@ public class News_All extends Fragment {
                     startActivity(intent);
                 }
 
-                android.support.v4.app.FragmentManager fm = getFragmentManager();
+                /*android.support.v4.app.FragmentManager fm = getFragmentManager();
                 android.support.v4.app.FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 fragmentTransaction.replace(R.id.container, fr);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
             }
         });
 

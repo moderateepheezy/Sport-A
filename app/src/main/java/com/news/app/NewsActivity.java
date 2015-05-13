@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +16,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -57,26 +59,13 @@ public class NewsActivity extends ActionBarActivity implements ActionBar.TabList
     ViewPager mViewPager;
     Toolbar mToolbar;
 
-    public static int size;
-    Adapter_All_News objAdapter;
-    AlertDialogManager alert = new AlertDialogManager();
-    private ItemAllNews objAllBean;
-    ArrayList<String> allListCatid,allListCatName,allListCatImageUrl;
-    String[] allArrayCatid,allArrayCatname,allArrayCatImageurl;
-    int textlength = 0;
+    String[] title ={"EPL", "LALIGA", "CAR RACE","BOXING", "HORSE RACE"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        allListCatid=new ArrayList<String>();
-        allListCatImageUrl=new ArrayList<String>();
-        allListCatName=new ArrayList<String>();
-
-        allArrayCatid=new String[allListCatid.size()];
-        allArrayCatname=new String[allListCatName.size()];
-        allArrayCatImageurl=new String[allListCatImageUrl.size()];
 
 /*
         if (JsonUtils.isNetworkAvailable(this)) {
@@ -90,11 +79,11 @@ public class NewsActivity extends ActionBarActivity implements ActionBar.TabList
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
+        getSupportActionBar().setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 
         //      mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
 //        setSupportActionBar(mToolbar);
-        Constant.arrayOfAllnews = new ArrayList<ItemAllNews>();
+
 
         /*actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
         actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
@@ -117,6 +106,12 @@ public class NewsActivity extends ActionBarActivity implements ActionBar.TabList
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
+                int len = title.length;
+                if(position < 0 || position >= len){
+                    return;
+                }
+                String tit = title[position];
+                actionBar.setTitle(tit);
             }
         });
 
@@ -126,72 +121,15 @@ public class NewsActivity extends ActionBarActivity implements ActionBar.TabList
             // the adapter. Also specify this Activity object, which implements
             // the TabListener interface, as the callback (listener) for when
             // this tab is selected.
+
+
             actionBar.addTab(
                     actionBar.newTab()
                             .setIcon(mSectionsPagerAdapter.getIcon(i))
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
 
-
     }
-
-
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_search, menu);
-        final SearchView searchView = (SearchView) menu.findItem(R.id.search)
-                .getActionView();
-
-        final MenuItem searchMenuItem = menu.findItem(R.id.search);
-        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                // TODO Auto-generated method stub
-                if (!hasFocus) {
-                    searchMenuItem.collapseActionView();
-                    searchView.setQuery("", false);
-                }
-            }
-        });
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // TODO Auto-generated method stub
-                textlength = newText.length();
-                arrayOfAllnews.clear();
-
-                for (int i = 0; i < allArrayCatname.length; i++) {
-                    if (textlength <= allArrayCatname[i].length()) {
-                        if (newText.toString().equalsIgnoreCase((String) allArrayCatname[i].subSequence(0, textlength))) {
-                            ItemAllNews objItem = new ItemAllNews();
-                            objItem.setCategoryId(Integer.parseInt(allArrayCatid[i]));
-                            objItem.setCategoryName(allArrayCatname[i]);
-                            objItem.setCategoryImageurl(allArrayCatImageurl[i]);
-
-                            arrayOfAllnews.add(objItem);
-                        }
-                    }
-                }
-
-                //setAdapterToListview();
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // TODO Auto-generated method stub
-                return false;
-            }
-        });
-        return false;
-    }*/
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -265,133 +203,31 @@ public class NewsActivity extends ActionBarActivity implements ActionBar.TabList
                 case 0:
                     return getString(R.string.title_section1).toUpperCase(l);
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
+                    return getString(R.string.title_section5).toUpperCase(l);
                 case 2:
                     return getString(R.string.title_section3).toUpperCase(l);
                 case 3:
-                    return getString(R.string.title_section4).toUpperCase(l);
+                    return getString(R.string.title_section2).toUpperCase(l);
                 case 4:
-                    return getString(R.string.title_section5).toUpperCase(l);
+                    return getString(R.string.title_section4).toUpperCase(l);
             }
-            return null;
+            return getString(R.string.title_section1).toUpperCase(l);
         }
 
-        public int getIcon(int position){
+        public int getIcon(int position) {
             switch (position) {
                 case 0:
-                    return R.drawable.pics1;
+                    return R.drawable.epl;
                 case 1:
-                    return R.drawable.pics2;
-               /* case 2:
-                    return R.drawable.pics3;
+                    return R.drawable.la_liga;
+                case 2:
+                    return R.drawable.car_racing;
                 case 3:
-                    return R.drawable.pics4;
+                    return R.drawable.boxing;
                 case 4:
-                    return R.drawable.pics5;*/
+                    return R.drawable.horse_racing;
             }
-            return R.drawable.pics1;
+            return R.drawable.la_liga;
         }
     }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-
-
-    private	class MyTask extends AsyncTask<String, Void, String> {
-
-        private RestClient connect;
-        private String text;
-        ProgressDialog pDialog;
-        String url;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            pDialog = new ProgressDialog(NewsActivity.this);
-            pDialog.setMessage("Loading...");
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            String url = Constant.CATEGORY_URL;
-            connect = new RestClient(url);
-
-            try {
-                connect.Execute(RestClient.RequestMethod.GET);
-                text = connect.getResponse();
-                JSONObject mainJson = new JSONObject(text);
-                //mainJson.get("NewsApp");
-                JSONArray jsonArray = mainJson.getJSONArray(Constant.CATEGORY_ARRAY_NAME);
-                JSONObject objJson = null;
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    objJson = jsonArray.getJSONObject(i);
-
-                    ItemAllNews objItem = new ItemAllNews();
-                    objItem.setCategoryName(objJson.getString(Constant.CATEGORY_NAME));
-                    objItem.setCategoryId(objJson.getInt(Constant.CATEGORY_CID));
-                    objItem.setCategoryImageurl(objJson.getString(Constant.CATEGORY_IMAGE));
-                    Constant.arrayOfAllnews.add(objItem);
-                }
-                size = Constant.arrayOfAllnews.size();
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-            for(int j=0;j<Constant.arrayOfAllnews.size();j++)
-            {
-                objAllBean=Constant.arrayOfAllnews.get(j);
-
-                allListCatid.add(String.valueOf(objAllBean.getCategoryId()));
-                allArrayCatid=allListCatid.toArray(allArrayCatid);
-
-                allListCatName.add(objAllBean.getCategoryName());
-                allArrayCatname=allListCatName.toArray(allArrayCatname);
-
-                allListCatImageUrl.add(objAllBean.getCategoryImageurl());
-                allArrayCatImageurl=allListCatImageUrl.toArray(allArrayCatImageurl);
-
-            }
-
-            return null;
-
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            if (null != pDialog && pDialog.isShowing()) {
-                pDialog.dismiss();
-                Toast.makeText(getApplicationContext(),
-                        size + "Size" +"URL = "+ url, Toast.LENGTH_LONG).show();
-            }
-
-            if (null == result || result.length() == 0) {
-                showToast("No data found from web!!!");
-
-            } else {
-
-
-
-                setAdapterToListview();
-            }
-
-        }
-        public void setAdapterToListview(){
-
-        }
-    }
-
-    public void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-    }
-
 }

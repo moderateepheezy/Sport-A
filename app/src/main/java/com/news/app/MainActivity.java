@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity
 
 
 
-    private NavigationDrawerFragment mNavigationDrawerFragment;
+    private com.news.app.Fragments.NavigationDrawerFragment mNavigationDrawerFragment;
     public static Toolbar mToolbar;
 
     private AdView mAdView;
@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity
        // mToolbar.
         //setSupportActionBar(mToolbar);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
+        mNavigationDrawerFragment = (com.news.app.Fragments.NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.fragment_drawer);
 
         // Set up the drawer.

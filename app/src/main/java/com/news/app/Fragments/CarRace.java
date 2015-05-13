@@ -14,10 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.news.app.About_Us;
+import com.news.app.Chat;
 import com.news.app.com.sport.app.adapter.Adapter_All_News_List;
 import com.news.app.com.sport.app.utilities.AlertDialogManager;
 import com.news.app.com.sport.app.utilities.Constant;
@@ -35,13 +39,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.erikw.PullToRefreshListView;
+
 /**
- * Created by simpumind on 4/25/15.
+ * Created by simpumind on 4/24/15.
  */
-public class CarRace  extends Fragment {
+public class CarRace extends Fragment {
 
-
-    ListView lsv_cat;
+    PullToRefreshListView lsv_cat;
     List<ItemNewsList> arrayOfNewsList;
     Adapter_All_News_List objAdapter;
     AlertDialogManager alert = new AlertDialogManager();
@@ -53,6 +58,9 @@ public class CarRace  extends Fragment {
     private int columnWidth;
     JsonUtils util;
     int textlength = 0;
+    static ProgressBar pDialog;
+
+    RelativeLayout layout;
     // private AdView mAdView;
     /**
      * The fragment argument representing the section number for this
@@ -85,14 +93,30 @@ public class CarRace  extends Fragment {
                              Bundle savedInstanceState) {
         StartAppAd.init(getActivity(), getString(R.string.startapp_dev_id), getString(R.string.startapp_app_id));
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
+        //getActivity().setTitle("EPL");
         StartAppAd.showSlider(getActivity());
         //mAdView = (AdView)rootView.findViewById(R.id.adView);
 //        mAdView.loadAd(new AdRequest.Builder().build());
 
-        getActivity().setTitle("Car Race");
+        layout = (RelativeLayout)rootView.findViewById(R.id.layout);
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            layout.setBackgroundDrawable( getResources().getDrawable(R.drawable.car_racer) );
+        } else {
+            layout.setBackground( getResources().getDrawable(R.drawable.premier_league));
+        }
 
+        /*TextView group_name = (TextView)rootView.findViewById(R.id.group);
+        group_name.setText("GO TO CHAT");
 
-        lsv_cat=(ListView)rootView.findViewById(R.id.lsv_latest);
+        group_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Chat.class);
+                startActivity(intent);
+            }
+        });*/
+
 
         arrayOfNewsList=new ArrayList<ItemNewsList>();
         allListnews=new ArrayList<String>();
@@ -120,13 +144,27 @@ public class CarRace  extends Fragment {
         util=new JsonUtils(getActivity());
 
 
-        if (JsonUtils.isNetworkAvailable(getActivity())) {
-            new MyTask().execute(Constant.CATEGORY_ITEM_URL+9);
-        } else {
-            showToast("No Network Connection!!!");
-            alert.showAlertDialog(getActivity(), "Internet Connection Error",
-                    "Please connect to working Internet connection", false);
-        }
+        networkCall();
+        lsv_cat = (PullToRefreshListView)rootView.findViewById(R.id.lsv_latest);
+        lsv_cat.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list contents
+
+                // ...
+
+                // Make sure you call listView.onRefreshComplete()
+                // when the loading is done. This can be done from here or any
+                // other place, like on a broadcast receive from your loading
+                // service or the onPostExecute of your AsyncTask.
+                arrayOfNewsList.clear();
+                networkCall();
+                lsv_cat.onRefreshComplete();
+            }
+        });
+
+
 
         lsv_cat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -152,20 +190,29 @@ public class CarRace  extends Fragment {
                 startActivity(intplay);
             }
         });
+        pDialog = (ProgressBar)rootView.findViewById(R.id.progressBar);
         return rootView;
     }
+
+    private void networkCall() {
+        if (JsonUtils.isNetworkAvailable(getActivity())) {
+            new MyTask().execute(Constant.CATEGORY_ITEM_URL+9);
+        } else {
+            showToast("No Network Connection!!!");
+            alert.showAlertDialog(getActivity(), "Internet Connection Error",
+                    "Please connect to working Internet connection", false);
+        }
+    }
+
     private	class MyTask extends AsyncTask<String, Void, String> {
 
-        ProgressDialog pDialog;
+
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Loading...");
-            pDialog.setCancelable(false);
-            pDialog.show();
+            ;
         }
 
         @Override
@@ -177,8 +224,9 @@ public class CarRace  extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (null != pDialog && pDialog.isShowing()) {
-                pDialog.dismiss();
+
+            if (null != pDialog && pDialog.isShown()) {
+                pDialog.setVisibility(View.GONE);
             }
 
             if (null == result || result.length() == 0) {

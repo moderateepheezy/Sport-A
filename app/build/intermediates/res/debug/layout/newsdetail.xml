@@ -12,13 +12,29 @@
 
     </android.support.v4.view.ViewPager>
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <RelativeLayout
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/admob_publisher_id" />
+        android:layout_width="fill_parent"
+        android:layout_height="50dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:text="COMMENT"
+            android:textColor="#ffffff"
+            android:id="@+id/comment"
+            android:background="@drawable/buttonshape"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/nav_chat"
+            android:layout_alignRight="@+id/comment"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/comment"
+            android:layout_toEndOf="@+id/comment" />
+    </RelativeLayout>
 
 </RelativeLayout><!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/layout/newsdetail.xml -->

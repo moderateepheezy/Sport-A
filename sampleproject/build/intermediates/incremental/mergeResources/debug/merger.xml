@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="unspecified"><source path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/build/intermediates/exploded-aar/Android News App/libraryproject/unspecified/res"><file path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/build/intermediates/exploded-aar/Android News App/libraryproject/unspecified/res/values/values.xml" qualifiers=""><string name="ptr_pull_to_refresh">Pull to refresh</string><style name="ptr_header">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style><style name="ptr_spinner" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:layout_marginLeft">25dp</item>
+    </style><style name="ptr_headerContainer">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0px</item>
+        <item name="android:gravity">bottom</item>
+    </style><string name="ptr_last_updated">Updated: %1$s</string><style name="ptr_last_updated" parent="ptr_text">
+        <item name="android:textStyle">normal</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:layout_below">@+id/ptr_id_text</item>
+    </style><style name="ptr_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style><string name="ptr_refreshing">Refreshing…</string><style name="ptr_textwrapper">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style><style name="ptr_arrow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:src">@drawable/ptr_pulltorefresh_arrow</item>
+        <item name="android:layout_marginLeft">25dp</item>
+    </style><string name="ptr_release_to_refresh">Release to refresh</string></file><file name="ptr_header" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/build/intermediates/exploded-aar/Android News App/libraryproject/unspecified/res/layout/ptr_header.xml" qualifiers="" type="layout"/><file name="ptr_pulltorefresh_arrow" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/build/intermediates/exploded-aar/Android News App/libraryproject/unspecified/res/drawable-ldpi-v4/ptr_pulltorefresh_arrow.png" qualifiers="ldpi-v4" type="drawable"/><file name="ptr_pulltorefresh_arrow" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/build/intermediates/exploded-aar/Android News App/libraryproject/unspecified/res/drawable-mdpi-v4/ptr_pulltorefresh_arrow.png" qualifiers="mdpi-v4" type="drawable"/><file name="ptr_pulltorefresh_arrow" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/build/intermediates/exploded-aar/Android News App/libraryproject/unspecified/res/drawable-hdpi-v4/ptr_pulltorefresh_arrow.png" qualifiers="hdpi-v4" type="drawable"/></source></dataSet><dataSet config="main"><source path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/res"><file path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/res/values/ptr_style.xml" qualifiers=""><style name="ptr_headerContainer">
+        
+        <!-- Change the background color -->
+        <!-- <item name="android:background">@android:color/darker_gray</item>  -->
+    </style><style name="ptr_text">
+        
+        <!-- Change the text style and color -->
+        <!-- <item name="android:textStyle">bold|italic</item>  -->
+        <!-- <item name="android:textColor">#cccccc</item> -->
+    </style></file><file path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/res/values/strings.xml" qualifiers=""><string name="edit">Edit</string><string name="app_name">PullToRefresh SampleProject</string><string name="delete">Delete</string><string name="hello">Hello World, PullToRefreshListViewSampleActivity!</string></file><file name="main" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/res/layout/main.xml" qualifiers="" type="layout"/><file name="list_item" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/res/layout/list_item.xml" qualifiers="" type="layout"/><file name="ic_launcher" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/res/drawable-ldpi/ic_launcher.png" qualifiers="ldpi-v4" type="drawable"/><file name="ic_launcher" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/res/drawable-mdpi/ic_launcher.png" qualifiers="mdpi-v4" type="drawable"/><file name="ic_launcher" path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/res/drawable-hdpi/ic_launcher.png" qualifiers="hdpi-v4" type="drawable"/></source><source path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/build/generated/res/rs/debug"/><source path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/build/generated/res/generated/debug"/></dataSet><dataSet config="debug"><source path="/home/simpumind/AndroidStudioProjects/Android News App/sampleproject/src/debug/res"/></dataSet><mergedItems/></merger>

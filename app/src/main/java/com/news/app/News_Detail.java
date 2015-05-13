@@ -1,9 +1,11 @@
 package com.news.app;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -22,13 +24,22 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.news.app.com.sport.app.adapter.Adapter_All_News_List;
 import com.news.app.com.sport.app.adapter.PostAdapter;
+import com.news.app.com.sport.app.model.ItemNewsList;
 import com.news.app.com.sport.app.model.Pojo;
+import com.news.app.com.sport.app.utilities.AlertDialogManager;
 import com.news.app.com.sport.app.utilities.Constant;
 import com.news.app.com.sport.app.utilities.DatabaseHandler;
 import com.news.app.com.sport.app.utilities.ImageLoader;
+import com.news.app.com.sport.app.utilities.JsonUtils;
 import com.startapp.android.publish.StartAppAd;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class News_Detail extends ActionBarActivity{
@@ -42,7 +53,7 @@ public class News_Detail extends ActionBarActivity{
     int TOTAL_IMAGE;
     public DatabaseHandler db;
     private Menu menu;
-    private AdView mAdView;
+    //private AdView mAdView;
     String newscid,newscat_id,newscatimage,newscatname,newsheading,newsimage,newsdes,newsdate;
 
     @Override
@@ -52,14 +63,14 @@ public class News_Detail extends ActionBarActivity{
         StartAppAd.init(this, getString(R.string.startapp_dev_id), getString(R.string.startapp_app_id));
         setContentView(R.layout.newsdetail);
         StartAppAd.showSlider(this);
-        mAdView = (AdView) findViewById(R.id.adView);
-        mAdView.loadAd(new AdRequest.Builder().build());
+        //mAdView = (AdView) findViewById(R.id.adView);
+        //mAdView.loadAd(new AdRequest.Builder().build());
 
         //getActionBar().setDisplayHomeAsUpEnabled(true);
-		/*getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
-		getActionBar().setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));*/
-
+        /*getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        getActionBar().setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+*/
         db = new DatabaseHandler(this);
         //setTitle(Constant.CATEGORY_TITLE);
         Intent i=getIntent();
@@ -294,7 +305,7 @@ public class News_Detail extends ActionBarActivity{
             ImageView news_imageview=(ImageView)imageLayout.findViewById(R.id.image_news);
             TextView txt_newstitle=(TextView)imageLayout.findViewById(R.id.text_newstitle);
             TextView txt_newsdate=(TextView)imageLayout.findViewById(R.id.text_newsdate);
-            //TextView txt_newsdes=(TextView)imageLayout.findViewById(R.id.text_newsdes);
+           // TextView txt_newsdes=(TextView)imageLayout.findViewById(R.id.text_newsdes);
             WebView webnewsdes=(WebView)imageLayout.findViewById(R.id.webView_newsdes);
 
             imageLoader.DisplayImage(Constant.SERVER_IMAGE_NEWSLISTDETAILS+allArrayNewsImage[position], news_imageview);
@@ -347,4 +358,5 @@ public class News_Detail extends ActionBarActivity{
         //mAdView.destroy();
         super.onDestroy();
     }
+
 }

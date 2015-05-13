@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow
+    android:id="@+id/tableRow"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:gravity="right"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/league_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:textSize="18dp"
+        android:text="English Premier League"
+        android:gravity="center"
+        android:layout_span="5"></TextView>
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:textSize="10dp"
+        android:text="22 Apr"
+        android:gravity="right"
+        android:layout_span="0"></TextView>
+</TableRow><!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/layout/item_rows.xml -->

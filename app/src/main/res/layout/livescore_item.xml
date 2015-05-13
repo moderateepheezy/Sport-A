@@ -1,75 +1,72 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/custom_list_row"
-    android:orientation="horizontal"
-    tools:context=".LiveScoreActivity" >
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#ffa0df0c"
-        android:id="@+id/header">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_launcher"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="England - Premeier League"
-            android:textSize="20sp"
-            android:textColor="#ffffff"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="28 April"
-            android:textSize="15sp"
-            android:textColor="#ffffff"/>
-
-        </LinearLayout>
+<TableRow
+    android:id="@+id/tableRow2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:layout_below="@+id/header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:text="FT"
         android:id="@+id/time"
-        android:text="11" />
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_span="1"
+        android:textStyle="bold"></TextView>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/team"
-        android:orientation="vertical"
-        android:layout_alignRight="@+id/time">
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Liverpool"
+                android:id="@+id/local_team"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_span="1"></TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_span="1"
+                android:background="#0000ff">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/time"
-            android:text="Man U" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="VS" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="Real-Madrid" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6"
+                    android:textSize="25dp"
+                    android:id="@+id/local_team_score"
+                    android:textColor="#ffffff"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:textSize="20dp"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="#ffffff"/>
+                <TextView
+                    android:layout_below="@+id/header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7"
+                    android:textSize="25dp"
+                    android:id="@+id/visitor_team_score"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Barcelona"
+                android:id="@+id/visitor_team"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_span="1"></TextView>
         </LinearLayout>
+    </RelativeLayout>
 
-
-</RelativeLayout>
+</TableRow>

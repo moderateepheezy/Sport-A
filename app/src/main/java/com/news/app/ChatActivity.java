@@ -7,39 +7,65 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import com.news.app.com.sport.app.adapter.PostAdapter;
 
 
-public class ChatActivity extends Fragment {
+public class ChatActivity extends ActionBarActivity {
+
+    private Toolbar mToolbar;
+    private ActionBar bar;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_chat,container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
 
-        //MainActivity.mToolbar.inflateMenu(R.menu.main);
-        //this.hasOptionsMenu();
-        /*final ActionBar actionBar = getAgetSupportActionBar();
+        ListView lsv_group = (ListView)findViewById(R.id.lsv_group);
+        lsv_group.setAdapter(new PostAdapter(this));
 
-
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
-        actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        /*bar = getSupportActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        bar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+        bar.setHomeButtonEnabled(true);
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));*/
-        return view;
+
+        lsv_group.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), Chat.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.news_menu, menu);
-        ;
+        getMenuInflater().inflate(R.menu.menu_subscribe, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode){
+            case KeyEvent.KEYCODE_ESCAPE:
+                finish();
+                startActivity(getIntent());
+                overridePendingTransition(R.anim.open_next, R.anim.close_next);
+                return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -50,9 +76,8 @@ public class ChatActivity extends Fragment {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.bact_btn) {
-            Intent i = new Intent(getActivity(), MainActiviy.class);
-            startActivity(i);
+        if (id == R.id.action_settings) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

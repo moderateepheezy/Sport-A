@@ -24,7 +24,7 @@
         android:padding="10dp"
         android:hint="Enter Phone Number"
         android:textColorHint="#cccccc"
-        android:password="true"/>
+        android:phoneNumber="true"/>
     <Button
         android:id="@+id/btnSingIn"
         android:layout_width="match_parent"

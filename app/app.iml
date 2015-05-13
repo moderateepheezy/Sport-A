@@ -113,6 +113,7 @@
     <orderEntry type="library" exported="" name="play-services-games-7.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-7.0.0" level="project" />
     <orderEntry type="module" module-name="materialDrawer" exported="" />
+    <orderEntry type="module" module-name="libraryproject" exported="" />
     <orderEntry type="module" module-name="restclient" exported="" />
   </component>
 </module>
