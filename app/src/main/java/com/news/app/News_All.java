@@ -1,7 +1,5 @@
 package com.news.app;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -17,15 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.news.app.com.sport.app.Game;
-import com.news.app.com.sport.app.adapter.Adapter_Latest;
 import com.news.app.com.sport.app.adapter.GridViewAdapter;
+import com.news.app.com.sport.app.groupchat.DialogsActivity;
+import com.news.app.com.sport.app.groupchat.LoginActivity;
 import com.news.app.com.sport.app.model.ItemAllNews;
 import com.news.app.com.sport.app.model.ItemLatest;
-import com.news.app.com.sport.app.utilities.AlertDialogManager;
 import com.news.app.com.sport.app.utilities.JsonUtils;
 
 import java.util.ArrayList;
@@ -62,19 +59,16 @@ public class News_All extends Fragment {
                // Fragment fr = new Fragment();
                 ItemAllNews item = (ItemAllNews) parent.getItemAtPosition(position);
                 // switch (item.getTitle().g)
-                if(item.getCategoryName().equals("Sport Chat")) {
-                    //Create intent
-                    Intent intent = new Intent(getActivity(), ChatActivity.class);
-
-                    //Start details activity
-                    startActivity(intent);
-                }
 
                 if(item.getCategoryName().equals("Game")){
                     Intent x = new Intent(getActivity(), Game.class);
                     startActivity(x);
                 }
 
+                if(item.getCategoryName().equals("Sport Chat")){
+                    Intent t = new Intent(getActivity(), DialogsActivity.class);
+                    startActivity(t);
+                }
 
                 if(item.getCategoryName().equals("Live Score")) {
                     //Create intent

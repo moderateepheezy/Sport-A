@@ -4,7 +4,7 @@
     <eat-comment/>
     <string-array name="image_ids">
         <item>@drawable/newsing</item>
-        <item>@drawable/livescores</item>
+        <item>@drawable/score</item>
         <item>@drawable/chating</item>
         <item>@drawable/faqs</item>
         <item>@drawable/game</item>
@@ -520,6 +520,7 @@ available. Please contact the developer for assistance.</string>
     <string name="title_activity_faqs">FAQS</string>
     <string name="title_activity_game">Game</string>
     <string name="title_activity_live_score">Live Score</string>
+    <string name="title_activity_login">Screen Name</string>
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="title_activity_main_activiy">MainActiviy</string>
     <string name="title_activity_news">NewsActivity</string>

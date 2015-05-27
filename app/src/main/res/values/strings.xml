@@ -3,7 +3,7 @@
 
     <string-array name="image_ids">
         <item>@drawable/newsing</item>
-        <item>@drawable/livescores</item>
+        <item>@drawable/score</item>
         <item>@drawable/chating</item>
         <item>@drawable/faqs</item>
         <item>@drawable/game</item>
@@ -121,5 +121,6 @@
     <string name="title_activity_details">Details</string>
     <string name="title_activity_notification_view">Sport ChatNotification</string>
     <string name="title_activity_game">Game</string>
+    <string name="title_activity_login">Screen Name</string>
     
 </resources>

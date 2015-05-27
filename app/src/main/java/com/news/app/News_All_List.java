@@ -229,8 +229,8 @@ public class News_All_List extends Activity {
 
 
 	public void setAdapterToListview() {
-		objAdapter = new Adapter_All_News_List(News_All_List.this, R.layout.lsv_item_news_list,
-				arrayOfNewsList,columnWidth);
+		/*objAdapter = new Adapter_All_News_List(News_All_List.this, R.layout.lsv_item_news_list,
+				arrayOfNewsList,columnWidth);*/
 		lsv_cat.setAdapter(objAdapter);
 	}
 

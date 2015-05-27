@@ -68,7 +68,7 @@
         jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/Android News App/materialDrawer/1.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="381efac925f23c41143a5e3f7b5f3859f97819fc">
+        sha1="8c26b14039328cbf12e4f690a912ed4aaa694373">
         <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-472eef042d2b179a9cfb85f4db688dba0cc8abf1.jar" />
     </item>
     <item
@@ -128,6 +128,13 @@
         <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-e2034eccedefc8e37ff90f81124c8abf3fda4e19.jar" />
     </item>
     <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/libs/quickblox-android-sdk-core-2.2.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d4b4bc2054c7e9015df17f66cd7620edc503e065">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/quickblox-android-sdk-core-2.2.3-b6ae13f7bb0f3c6030838ae7a6e802207ac7675d.jar" />
+    </item>
+    <item
         jar="/home/simpumind/AndroidStudioProjects/Android News App/app/libs/StartAppInAppPlus-2.3.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -156,10 +163,17 @@
         <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-40a4b1ae6dc2ae55b0304e0f703970c9854a82d3.jar" />
     </item>
     <item
+        jar="/home/simpumind/AndroidStudioProjects/Android News App/app/libs/quickblox-android-sdk-chat-2.2.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="19da0fd2b226abbdfab13e400eaca96ff82388b3">
+        <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/quickblox-android-sdk-chat-2.2.3-e0f77a952d6dea7c7c97fd6030cfcb657b891e6a.jar" />
+    </item>
+    <item
         jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/Android News App/libraryproject/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="84edbccafff8680b001524f5bf46c2880db8ec9e">
+        sha1="b6eae4060c32462f2bbecf52f1d2b8a9c965f02f">
         <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-382a04ab9fd9bd9013b2cbe0eb0502d27e326493.jar" />
     </item>
     <item
@@ -208,7 +222,7 @@
         jar="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/exploded-aar/Android News App/restclient/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="5e75a25c648b839a338f5d49378e2a6d8f55c31f">
+        sha1="7fd65219d810adf253129b630ad069f39b840a50">
         <dex dex="/home/simpumind/AndroidStudioProjects/Android News App/app/build/intermediates/pre-dexed/debug/classes-c3ca95d18f1617dab992261035555c2f56988fa0.jar" />
     </item>
 

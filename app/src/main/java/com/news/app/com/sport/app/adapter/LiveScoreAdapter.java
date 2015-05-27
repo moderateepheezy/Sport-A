@@ -103,10 +103,10 @@ public class LiveScoreAdapter extends BaseAdapter {
         else {
             holder = (ViewHolder) vi.getTag();
         }
-            int pos;
-            for (String header : headers) {
-                pos = 0;
-                holder.league.setText(header);
+            int pos = 0;
+        String h = headers.get(position);
+           // for (String header : headers) {
+                holder.league.setText(h);
                 for (LiveScore liveScore : tableItems1) {
                     if (liveScore.getLeagueId() == pos) {
                         holder.localTeam.setText(liveScore.getLocalTeam());
@@ -118,7 +118,7 @@ public class LiveScoreAdapter extends BaseAdapter {
                     }
                 }
                 ++pos;
-            }
+           // }
         return vi;
     }
 

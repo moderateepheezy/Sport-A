@@ -391,7 +391,7 @@ ADDED from AndroidManifest.xml:119:9
 		ADDED from AndroidManifest.xml:121:13
 	android:name
 		ADDED from AndroidManifest.xml:120:13
-activity#com.news.app.ChatActivity
+activity#com.news.app.com.sport.app.groupchat.DialogsActivity
 ADDED from AndroidManifest.xml:126:9
 	android:label
 		ADDED from AndroidManifest.xml:128:13
@@ -445,7 +445,7 @@ ADDED from AndroidManifest.xml:162:9
 		ADDED from AndroidManifest.xml:165:13
 	android:name
 		ADDED from AndroidManifest.xml:163:13
-activity#com.news.app.Chat
+activity#com.news.app.com.sport.app.groupchat.ChatActivity
 ADDED from AndroidManifest.xml:170:9
 	android:label
 		ADDED from AndroidManifest.xml:172:13
@@ -473,6 +473,12 @@ ADDED from AndroidManifest.xml:190:9
 		ADDED from AndroidManifest.xml:192:13
 	android:name
 		ADDED from AndroidManifest.xml:191:13
+activity#com.news.app.com.sport.app.groupchat.LoginActivity
+ADDED from AndroidManifest.xml:194:9
+	android:label
+		ADDED from AndroidManifest.xml:196:13
+	android:name
+		ADDED from AndroidManifest.xml:195:13
 activity#android.support.v7.widget.TestActivity
 ADDED from com.android.support:recyclerview-v7:22.0.0:23:9
 	android:label

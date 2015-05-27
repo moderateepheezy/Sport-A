@@ -9,6 +9,8 @@ import com.news.app.com.sport.app.model.ItemAllNews;
 
 public class Constant implements Serializable{
 
+    public static String USERNAME;
+    public static final String PASSWORD = "1234567abcd";
     private static final long serialVersionUID = 1L;
 
     //this is the path of uploaded image of category

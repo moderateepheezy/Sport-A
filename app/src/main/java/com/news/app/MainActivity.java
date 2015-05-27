@@ -80,7 +80,7 @@ public class MainActivity extends ActionBarActivity
                // startActivity(a);
                 break;
             case 1:
-                fragment = new ChatActivity();
+                fragment = new DialogActivity();
                 break;
             case 2:
                 Intent i = new Intent(this, NewsActivity.class);

@@ -118,9 +118,9 @@ public class NavigationDrawerFragment extends Fragment {
         List<NavigationItem> items = new ArrayList<NavigationItem>();
         items.add(new NavigationItem("Home", R.drawable.nav1));
         items.add(new NavigationItem("Sport News", R.drawable.nav_news));
-        items.add(new NavigationItem("Sport Chat", R.drawable.nav_chat));
+        items.add(new NavigationItem("Sport ChatActivity", R.drawable.nav_chat));
         items.add(new NavigationItem("Subscribe", R.drawable.nav2));
-        items.add(new NavigationItem("Live Scores", R.drawable.score));
+        items.add(new NavigationItem("Live Scores", R.drawable.scores));
         items.add(new NavigationItem("FAQS", R.drawable.faqi));
         return items;
     }

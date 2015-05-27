@@ -124,7 +124,7 @@
                 android:value=".MainActiviy" />
         </activity>
         <activity
-            android:name=".ChatActivity"
+            android:name=".com.sport.app.groupchat.DialogsActivity"
             android:label="@string/title_activity_chat" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -168,12 +168,12 @@
                 android:value="com.news.app.MainActiviy" />
         </activity>
         <activity
-            android:name=".Chat"
+            android:name=".com.sport.app.groupchat.ChatActivity"
             android:label="Chat"
-            android:parentActivityName=".ChatActivity" >
+            android:parentActivityName=".com.sport.app.groupchat.DialogsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.news.app.ChatActivity" />
+                android:value=".com.sport.app.groupchat.DialogsActivity" />
         </activity>
         <activity
             android:name=".Details"
@@ -190,6 +190,10 @@
         <activity
             android:name=".com.sport.app.Game"
             android:label="@string/title_activity_game" >
+        </activity>
+        <activity
+            android:name=".com.sport.app.groupchat.LoginActivity"
+            android:label="@string/title_activity_login" >
         </activity>
     </application>
 

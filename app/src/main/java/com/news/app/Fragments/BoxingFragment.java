@@ -1,6 +1,5 @@
 package com.news.app.Fragments;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -13,24 +12,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.news.app.About_Us;
-import com.news.app.Chat;
 import com.news.app.com.sport.app.adapter.Adapter_All_News_List;
+import com.news.app.com.sport.app.model.Pojo;
 import com.news.app.com.sport.app.utilities.AlertDialogManager;
 import com.news.app.com.sport.app.utilities.Constant;
-import com.news.app.com.sport.app.model.ItemNewsList;
+import com.news.app.com.sport.app.utilities.DatabaseHandler;
+import com.news.app.com.sport.app.utilities.DatabaseHandlerCache;
 import com.news.app.com.sport.app.utilities.JsonUtils;
 import com.news.app.News_Detail;
 import com.news.app.News_Favorite;
 import com.news.app.R;
-import com.startapp.android.publish.StartAppAd;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,18 +43,23 @@ import eu.erikw.PullToRefreshListView;
 public class BoxingFragment extends Fragment {
 
     PullToRefreshListView lsv_cat;
-    List<ItemNewsList> arrayOfNewsList;
+    List<Pojo> arrayOfNewsList;
     Adapter_All_News_List objAdapter;
     AlertDialogManager alert = new AlertDialogManager();
     ArrayList<String> allListnews,allListnewsCatName;
     ArrayList<String> allListNewsCId,allListNewsCatId,allListNewsCatImage,allListNewsCatName,allListNewsHeading,allListNewsImage,allListNewsDes,allListNewsDate;
     String[] allArraynews,allArraynewsCatName;
     String[] allArrayNewsCId,allArrayNewsCatId,allArrayNewsCatImage,allArrayNewsCatName,allArrayNewsHeading,allArrayNewsImage,allArrayNewsDes,allArrayNewsDate;
-    private ItemNewsList objAllBean;
+    private Pojo objAllBean;
     private int columnWidth;
     JsonUtils util;
     int textlength = 0;
     static ProgressBar pDialog;
+
+    private DatabaseHandlerCache.DatabaseManager dbManager;
+
+    DatabaseHandlerCache db;
+
     // private AdView mAdView;
     /**
      * The fragment argument representing the section number for this
@@ -66,7 +67,8 @@ public class BoxingFragment extends Fragment {
      */
 
     //public List<ItemAllNews> arrayOfAllnews;
-    RelativeLayout layout;
+
+
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -88,34 +90,17 @@ public class BoxingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        StartAppAd.init(getActivity(), getString(R.string.startapp_dev_id), getString(R.string.startapp_app_id));
-        View rootView = inflater.inflate(R.layout.fragment_news, container, false);
-        //getActivity().setTitle("EPL");
-        StartAppAd.showSlider(getActivity());
-        //mAdView = (AdView)rootView.findViewById(R.id.adView);
-//        mAdView.loadAd(new AdRequest.Builder().build());
+        View rootView = inflater.inflate(R.layout.fragment_news_car_race, container, false);
 
-       /* layout = (RelativeLayout)rootView.findViewById(R.id.layout);
-        int sdk = android.os.Build.VERSION.SDK_INT;
-        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            layout.setBackgroundDrawable( getResources().getDrawable(R.drawable.boxing) );
-        } else {
-            layout.setBackground( getResources().getDrawable(R.drawable.premier_league));
-        }*/
+        db = new DatabaseHandlerCache(getActivity());
+        dbManager = DatabaseHandlerCache.DatabaseManager.INSTANCE;
+        arrayOfNewsList=new ArrayList<Pojo>();
+        arrayOfNewsList = db.getAllDataFromBoxing();
 
-        /*TextView group_name = (TextView)rootView.findViewById(R.id.group);
-        group_name.setText("GO TO CHAT");
+       /* objAdapter = new Adapter_All_News_List(getActivity(), R.layout.lsv_item_news_list_horse,
+                arrayOfNewsList, columnWidth);
+        lsv_cat.setAdapter(objAdapter);*/
 
-        group_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Chat.class);
-                startActivity(intent);
-            }
-        });*/
-
-
-        arrayOfNewsList=new ArrayList<ItemNewsList>();
         allListnews=new ArrayList<String>();
         allListnewsCatName=new ArrayList<String>();
         allListNewsCId=new ArrayList<String>();
@@ -137,6 +122,7 @@ public class BoxingFragment extends Fragment {
         allArrayNewsImage=new String[allListNewsImage.size()];
         allArrayNewsDes=new String[allListNewsDes.size()];
         allArrayNewsDate=new String[allListNewsDate.size()];
+
 
         util=new JsonUtils(getActivity());
 
@@ -237,21 +223,27 @@ public class BoxingFragment extends Fragment {
                     JSONObject mainJson = new JSONObject(result);
                     JSONArray jsonArray = mainJson.getJSONArray(Constant.CATEGORY_ARRAY_NAME);
                     JSONObject objJson = null;
+                    db = new DatabaseHandlerCache(getActivity());
+                    List<Pojo> newsList = db.getAllDataFromCarRace();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         objJson = jsonArray.getJSONObject(i);
 
-                        ItemNewsList objItem = new ItemNewsList();
+                        //ItemNewsList objItem = new ItemNewsList();
+                        Pojo p = new Pojo();
 
-                        objItem.setCId(objJson.getString(Constant.CATEGORY_ITEM_CID));
-                        objItem.setCategoryName(objJson.getString(Constant.CATEGORY_ITEM_NAME));
-                        objItem.setCategoryImage(objJson.getString(Constant.CATEGORY_ITEM_IMAGE));
-                        objItem.setCatId(objJson.getString(Constant.CATEGORY_ITEM_CAT_ID));
-                        objItem.setNewsImage(objJson.getString(Constant.CATEGORY_ITEM_NEWSIMAGE));
-                        objItem.setNewsHeading(objJson.getString(Constant.CATEGORY_ITEM_NEWSHEADING));
-                        objItem.setNewsDescription(objJson.getString(Constant.CATEGORY_ITEM_NEWSDESCRI));
-                        objItem.setNewsDate(objJson.getString(Constant.CATEGORY_ITEM_NEWSDATE));
+                        p.setCId(objJson.getString(Constant.CATEGORY_ITEM_CID));
+                        p.setCategoryName(objJson.getString(Constant.CATEGORY_ITEM_NAME));
+                        p.setCatId(objJson.getString(Constant.CATEGORY_ITEM_CAT_ID));
+                        p.setNewsImage(objJson.getString(Constant.CATEGORY_ITEM_NEWSIMAGE));
+                        p.setNewsHeading(objJson.getString(Constant.CATEGORY_ITEM_NEWSHEADING));
+                        p.setNewsDesc(objJson.getString(Constant.CATEGORY_ITEM_NEWSDESCRI));
+                        p.setNewsDate(objJson.getString(Constant.CATEGORY_ITEM_NEWSDATE));
 
-                        arrayOfNewsList.add(objItem);
+                       // if(p.getCatId() > db.getS)
+                        db.AddtoBoxing(new Pojo(p.getCatId(), p.getCId(), p.getCategoryName(),
+                                p.getNewsHeading(), p.getNewsImage(), p.getNewsDesc(), p.getNewsDate()));
+
+                        arrayOfNewsList = db.getAllDataFromBoxing();
 
 
                     }
@@ -280,7 +272,7 @@ public class BoxingFragment extends Fragment {
                     allListNewsHeading.add(String.valueOf(objAllBean.getNewsHeading()));
                     allArrayNewsHeading=allListNewsHeading.toArray(allArrayNewsHeading);
 
-                    allListNewsDes.add(String.valueOf(objAllBean.getNewsDescription()));
+                    allListNewsDes.add(String.valueOf(objAllBean.getNewsDesc()));
                     allArrayNewsDes=allListNewsDes.toArray(allArrayNewsDes);
 
                     allListNewsDate.add(String.valueOf(objAllBean.getNewsDate()));
@@ -294,12 +286,14 @@ public class BoxingFragment extends Fragment {
         }
     }
 
-
-
     public void setAdapterToListview() {
-        objAdapter = new Adapter_All_News_List(getActivity(), R.layout.lsv_item_news_list,
-                arrayOfNewsList,columnWidth);
-        lsv_cat.setAdapter(objAdapter);
+        if(!arrayOfNewsList.isEmpty()) {
+            objAdapter = new Adapter_All_News_List(getActivity(), R.layout.lsv_item_news_list_car,
+                    arrayOfNewsList, columnWidth);
+            lsv_cat.setAdapter(objAdapter);
+        }else{
+            lsv_cat.setAdapter(null);
+        }
     }
 
     public void showToast(String msg) {
@@ -346,13 +340,13 @@ public class BoxingFragment extends Fragment {
                         {
 
 
-                            ItemNewsList objItem = new ItemNewsList();
+                            Pojo objItem = new Pojo();
 
                             objItem.setCategoryName(allArrayNewsCatName[i]);
                             objItem.setCatId(allArrayNewsCatId[i]);
                             objItem.setCId(allArrayNewsCId[i]);
                             objItem.setNewsDate(allArrayNewsDate[i]);
-                            objItem.setNewsDescription(allArrayNewsDes[i]);
+                            objItem.setNewsDesc(allArrayNewsDes[i]);
                             objItem.setNewsHeading(allArrayNewsHeading[i]);
                             objItem.setNewsImage(allArrayNewsImage[i]);
 
@@ -425,21 +419,28 @@ public class BoxingFragment extends Fragment {
         }
     }
 
+    public void onDestroy() {
+        // Log.e("OnDestroy", "called");
+        if (!dbManager.isDatabaseClosed())
+            dbManager.closeDatabase();
+        super.onDestroy();
+    }
+
     @Override
     public void onPause() {
-        //mAdView.pause();
         super.onPause();
+        // Log.e("OnPaused", "called");
+        if (!dbManager.isDatabaseClosed())
+            dbManager.closeDatabase();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-//        mAdView.resume();
-    }
 
-    @Override
-    public void onDestroy() {
-        //mAdView.destroy();
-        super.onDestroy();
+        arrayOfNewsList = db.getAllDataFromBoxing();
+        objAdapter = new Adapter_All_News_List(getActivity(), R.layout.lsv_item_news_list_car,
+                arrayOfNewsList, columnWidth);
+        lsv_cat.setAdapter(objAdapter);
     }
 }

@@ -11,20 +11,21 @@ import android.widget.TextView;
 
 import com.news.app.R;
 import com.news.app.com.sport.app.model.ItemNewsList;
+import com.news.app.com.sport.app.model.Pojo;
 import com.news.app.com.sport.app.utilities.Constant;
 import com.news.app.com.sport.app.utilities.ImageLoader;
 
 import java.util.List;
 
-public class Adapter_All_News_List extends ArrayAdapter<ItemNewsList>{
+public class Adapter_All_News_List extends ArrayAdapter<Pojo>{
 	
 	private Activity activity;
-	private List<ItemNewsList> itemsnewslist;
-	private ItemNewsList objnewslistBean;
+	private List<Pojo> itemsnewslist;
+	private Pojo objnewslistBean;
 	private int row;
 	public ImageLoader imageLoader;
 	 
-	 public Adapter_All_News_List(Activity act, int resource, List<ItemNewsList> arrayList, int columnWidth) {
+	 public Adapter_All_News_List(Activity act, int resource, List<Pojo> arrayList, int columnWidth) {
 			super(act, resource, arrayList);
 			this.activity = act;
 			this.row = resource;

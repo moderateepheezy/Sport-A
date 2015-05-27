@@ -1,6 +1,7 @@
 package com.news.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -26,13 +27,28 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdView;
 import com.news.app.com.sport.app.NotificationView;
+import com.news.app.com.sport.app.groupchat.ApplicationSingleton;
+import com.news.app.com.sport.app.groupchat.DataHolder;
+import com.news.app.com.sport.app.groupchat.DialogsActivity;
+import com.news.app.com.sport.app.groupchat.LoginActivity;
 import com.news.app.com.sport.app.model.ItemAllNews;
+import com.news.app.com.sport.app.utilities.Constant;
 import com.news.app.com.sport.app.utilities.ImageLoader;
+import com.quickblox.auth.QBAuth;
+import com.quickblox.auth.model.QBSession;
+import com.quickblox.chat.QBChatService;
+import com.quickblox.core.QBEntityCallbackImpl;
+import com.quickblox.core.QBSettings;
+import com.quickblox.users.model.QBUser;
 import com.startapp.android.publish.StartAppAd;
+
+import org.jivesoftware.smack.SmackException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +72,22 @@ public class MainActiviy extends ActionBarActivity {
     private int notificationID = 100;
     private int numMessages = 0;
 
+    public static final String APP_ID = "22950";
+    public static final String AUTH_KEY = "TRfNfhHpURK8sO3";
+    public static final String AUTH_SECRET = "AJJkDmt7XTJ2Ccj";
+
+    static final int AUTO_PRESENCE_INTERVAL_IN_SECONDS = 30;
+
+    private QBChatService chatService;
+
+    //private ProgressBar progressBar;
+
+    private Context context;
+
+    final QBUser user = new QBUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StartAppAd.init(this, getString(R.string.startapp_dev_id), getString(R.string.startapp_app_id));
         setContentView(R.layout.activity_main_activiy);
 
         if (savedInstanceState == null) {
@@ -67,6 +95,7 @@ public class MainActiviy extends ActionBarActivity {
                     .add(R.id.container, new News_All())
                     .commit();
         }
+
 
 
         mDrawerList = (ListView)findViewById(R.id.navList);
@@ -78,6 +107,13 @@ public class MainActiviy extends ActionBarActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        QBChatService.setDebugEnabled(true);
+        QBSettings.getInstance().fastConfigInit(APP_ID, AUTH_KEY, AUTH_SECRET);
+        if (!QBChatService.isInitialized()) {
+            QBChatService.init(this);
+        }
+        chatService = QBChatService.getInstance();
 
         //Declare the timer
         Timer t = new Timer();
@@ -101,6 +137,65 @@ public class MainActiviy extends ActionBarActivity {
                 0,
 //Set the amount of time between each execution (in milliseconds)
                 50000);
+
+        loginToQuickBlox();
+    }
+
+    public void loginToQuickBlox(){
+
+        user.setLogin(Constant.USERNAME);
+        user.setPassword(Constant.PASSWORD);
+        QBAuth.createSession(user, new QBEntityCallbackImpl<QBSession>() {
+            @Override
+            public void onSuccess(QBSession session, Bundle args) {
+                DataHolder.getDataHolder().setSignInQbUser(user);
+                String x = DataHolder.getDataHolder().getSignInQbUser().getLogin().toString();
+                Toast.makeText(getApplicationContext(), x, Toast.LENGTH_LONG).show();
+                // save current user
+                //
+                user.setId(session.getUserId());
+                //if(user.getId() == 1678050){
+                //	value = 1678050;
+                // }
+                ((ApplicationSingleton) getApplicationContext()).setCurrentUser(user);
+
+                // login to Chat
+                //getAllUser();
+                //
+                loginToChat(user);
+            }
+
+            @Override
+            public void onError(List<String> errors) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActiviy.this);
+                dialog.setMessage("create session errors: " + errors).create().show();
+            }
+        });
+    }
+
+    private void loginToChat(final QBUser user){
+
+        chatService.login(user, new QBEntityCallbackImpl() {
+            @Override
+            public void onSuccess() {
+
+                // Start sending presences
+                //
+                try {
+                    chatService.startAutoSendPresence(AUTO_PRESENCE_INTERVAL_IN_SECONDS);
+                } catch (SmackException.NotLoggedInException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onError(List errors) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActiviy.this);
+                dialog.setMessage("chat login errors: " + errors).create().show();
+            }
+        });
     }
 
     protected void displayNotification() {
@@ -159,7 +254,7 @@ public class MainActiviy extends ActionBarActivity {
                         startActivity(i);
                         break;
                     case 2:
-                        Intent o = new Intent(getApplicationContext(), ChatActivity.class);
+                        Intent o = new Intent(getApplicationContext(), DialogsActivity.class);
                         startActivity(o);
                         break;
                     case 3:
@@ -224,10 +319,10 @@ public class MainActiviy extends ActionBarActivity {
         List<NavigationItem> items = new ArrayList<NavigationItem>();
         items.add(new NavigationItem("Home", R.drawable.nav1));
         items.add(new NavigationItem("Sport News", R.drawable.nav_news));
-        items.add(new NavigationItem("Sport Chat", R.drawable.nav_chat));
+        items.add(new NavigationItem("Sport ChatActivity", R.drawable.nav_chat));
         items.add(new NavigationItem("Subscribe", R.drawable.nav2));
-        items.add(new NavigationItem("Live Scores", R.drawable.score));
-        items.add(new NavigationItem("Game", R.drawable.game));
+        items.add(new NavigationItem("Live Scores", R.drawable.scores));
+        items.add(new NavigationItem("Game", R.drawable.games));
         items.add(new NavigationItem("FAQS", R.drawable.faqi));
         return items;
     }

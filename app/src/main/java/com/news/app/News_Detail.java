@@ -60,9 +60,7 @@ public class News_Detail extends ActionBarActivity{
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        StartAppAd.init(this, getString(R.string.startapp_dev_id), getString(R.string.startapp_app_id));
         setContentView(R.layout.newsdetail);
-        StartAppAd.showSlider(this);
         //mAdView = (AdView) findViewById(R.id.adView);
         //mAdView.loadAd(new AdRequest.Builder().build());
 

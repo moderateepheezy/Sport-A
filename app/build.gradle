@@ -29,4 +29,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:22.0.0'
     compile project(':restclient')
     compile project(':libraryproject')
+    compile files('libs/quickblox-android-sdk-chat-2.2.3.jar')
+    compile files('libs/quickblox-android-sdk-core-2.2.3.jar')
 }
