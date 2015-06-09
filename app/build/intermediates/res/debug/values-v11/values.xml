@@ -2,8 +2,8 @@
 <resources>
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/values-v11/styles.xml -->
     <eat-comment/>
-    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
-        <!-- API 11 theme customizations can go here. -->
+    <style name="AppBaseTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyTheme.MyActionBar</item>
     </style>
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-v11/values.xml -->
     <eat-comment/>
@@ -200,6 +200,15 @@
     <style name="BaseTheme.MainTheme">
     </style>
     <style name="BaseTheme.MainTheme.WithNavDrawer">
+    </style>
+    <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/src/main/res/values-v11/styles.xml -->
+    <eat-comment/>
+    <style name="MyTheme.MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:titleTextStyle">@style/MyTheme.MyActionBar.TitleTextStyle</item>
+    </style>
+    <style name="MyTheme.MyActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:background">#81CFEB</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <!-- From: file:/home/simpumind/AndroidStudioProjects/Android%20News%20App/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-v11/values.xml -->
     <eat-comment/>

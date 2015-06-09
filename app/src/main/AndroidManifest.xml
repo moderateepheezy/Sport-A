@@ -23,6 +23,7 @@
         android:maxSdkVersion="18" />
 
     <application
+        android:name=".com.sport.app.groupchat.ApplicationSingleton"
         android:allowBackup="true"
         android:icon="@drawable/ic_logo_ap"
         android:label="@string/app_name"

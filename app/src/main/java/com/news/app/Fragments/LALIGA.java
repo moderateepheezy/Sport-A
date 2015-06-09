@@ -223,7 +223,6 @@ public class LALIGA extends Fragment {
                     JSONArray jsonArray = mainJson.getJSONArray(Constant.CATEGORY_ARRAY_NAME);
                     JSONObject objJson = null;
                     db = new DatabaseHandlerCache(getActivity());
-                    List<Pojo> newsList = db.getAllDataFromLaliga();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         objJson = jsonArray.getJSONObject(i);
 

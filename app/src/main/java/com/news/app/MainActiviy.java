@@ -138,65 +138,10 @@ public class MainActiviy extends ActionBarActivity {
 //Set the amount of time between each execution (in milliseconds)
                 50000);
 
-        loginToQuickBlox();
     }
 
-    public void loginToQuickBlox(){
-
-        user.setLogin(Constant.USERNAME);
-        user.setPassword(Constant.PASSWORD);
-        QBAuth.createSession(user, new QBEntityCallbackImpl<QBSession>() {
-            @Override
-            public void onSuccess(QBSession session, Bundle args) {
-                DataHolder.getDataHolder().setSignInQbUser(user);
-                String x = DataHolder.getDataHolder().getSignInQbUser().getLogin().toString();
-                Toast.makeText(getApplicationContext(), x, Toast.LENGTH_LONG).show();
-                // save current user
-                //
-                user.setId(session.getUserId());
-                //if(user.getId() == 1678050){
-                //	value = 1678050;
-                // }
-                ((ApplicationSingleton) getApplicationContext()).setCurrentUser(user);
-
-                // login to Chat
-                //getAllUser();
-                //
-                loginToChat(user);
-            }
-
-            @Override
-            public void onError(List<String> errors) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActiviy.this);
-                dialog.setMessage("create session errors: " + errors).create().show();
-            }
-        });
-    }
-
-    private void loginToChat(final QBUser user){
-
-        chatService.login(user, new QBEntityCallbackImpl() {
-            @Override
-            public void onSuccess() {
-
-                // Start sending presences
-                //
-                try {
-                    chatService.startAutoSendPresence(AUTO_PRESENCE_INTERVAL_IN_SECONDS);
-                } catch (SmackException.NotLoggedInException e) {
-                    e.printStackTrace();
-                }
 
 
-            }
-
-            @Override
-            public void onError(List errors) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActiviy.this);
-                dialog.setMessage("chat login errors: " + errors).create().show();
-            }
-        });
-    }
 
     protected void displayNotification() {
         Log.i("Start", "notification");

@@ -223,7 +223,6 @@ public class CarRace extends Fragment {
                     JSONArray jsonArray = mainJson.getJSONArray(Constant.CATEGORY_ARRAY_NAME);
                     JSONObject objJson = null;
                     db = new DatabaseHandlerCache(getActivity());
-                    List<Pojo> newsList = db.getAllDataFromCarRace();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         objJson = jsonArray.getJSONObject(i);
 

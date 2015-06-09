@@ -8,18 +8,18 @@ package eu.erikw;
 
 public final class R {
 	public static final class drawable {
-		public static final int ptr_pulltorefresh_arrow = 0x7f0200b8;
+		public static final int ptr_pulltorefresh_arrow = 0x7f0200b9;
 	}
 	public static final class id {
-		public static final int ptr_id_header = 0x7f0b00bc;
-		public static final int ptr_id_image = 0x7f0b00bd;
-		public static final int ptr_id_last_updated = 0x7f0b00c1;
-		public static final int ptr_id_spinner = 0x7f0b00be;
-		public static final int ptr_id_text = 0x7f0b00c0;
-		public static final int ptr_id_textwrapper = 0x7f0b00bf;
+		public static final int ptr_id_header = 0x7f0b00bf;
+		public static final int ptr_id_image = 0x7f0b00c0;
+		public static final int ptr_id_last_updated = 0x7f0b00c4;
+		public static final int ptr_id_spinner = 0x7f0b00c1;
+		public static final int ptr_id_text = 0x7f0b00c3;
+		public static final int ptr_id_textwrapper = 0x7f0b00c2;
 	}
 	public static final class layout {
-		public static final int ptr_header = 0x7f030050;
+		public static final int ptr_header = 0x7f030052;
 	}
 	public static final class string {
 		public static final int ptr_last_updated = 0x7f0d0054;
@@ -28,12 +28,12 @@ public final class R {
 		public static final int ptr_release_to_refresh = 0x7f0d0057;
 	}
 	public static final class style {
-		public static final int ptr_arrow = 0x7f0e0102;
-		public static final int ptr_header = 0x7f0e0103;
-		public static final int ptr_headerContainer = 0x7f0e0104;
-		public static final int ptr_last_updated = 0x7f0e0105;
-		public static final int ptr_spinner = 0x7f0e0106;
-		public static final int ptr_text = 0x7f0e0107;
-		public static final int ptr_textwrapper = 0x7f0e0108;
+		public static final int ptr_arrow = 0x7f0e0101;
+		public static final int ptr_header = 0x7f0e0102;
+		public static final int ptr_headerContainer = 0x7f0e0103;
+		public static final int ptr_last_updated = 0x7f0e0104;
+		public static final int ptr_spinner = 0x7f0e0105;
+		public static final int ptr_text = 0x7f0e0106;
+		public static final int ptr_textwrapper = 0x7f0e0107;
 	}
 }

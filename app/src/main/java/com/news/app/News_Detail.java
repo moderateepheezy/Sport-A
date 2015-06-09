@@ -2,8 +2,10 @@ package com.news.app;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,7 +22,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,9 +48,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class News_Detail extends ActionBarActivity{
+
+    private PopupWindow popWindow;
+
+    int mDeviceHieght;
 
     int position;
     String[] allArraynews,allArraynewsCatName;
@@ -68,7 +81,16 @@ public class News_Detail extends ActionBarActivity{
         /*getActionBar().setHomeButtonEnabled(true);
         getActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
         getActionBar().setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.header)));
+
 */
+
+        final Button btnComment = (Button)findViewById(R.id.comment);
+        btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onShowPopup(btnComment);
+            }
+        });
         db = new DatabaseHandler(this);
         //setTitle(Constant.CATEGORY_TITLE);
         Intent i=getIntent();
@@ -355,6 +377,52 @@ public class News_Detail extends ActionBarActivity{
     protected void onDestroy() {
         //mAdView.destroy();
         super.onDestroy();
+    }
+
+    // call this method when required to show popup
+    public void onShowPopup(View v){
+
+        LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        // inflate the custom popup layout
+        final View inflatedView = layoutInflater.inflate(R.layout.fb_popup_layout, null,false);
+        // find the ListView in the popup layout
+        ListView listView = (ListView)inflatedView.findViewById(R.id.commentsListView);
+
+        // get device size
+        Display display = getWindowManager().getDefaultDisplay();
+        final Point size = new Point();
+        display.getSize(size);
+        mDeviceHieght = size.y;
+
+
+        // fill the data to the list items
+        setSimpleList(listView);
+
+
+        // set height depends on the device size
+        popWindow = new PopupWindow(inflatedView, size.x - 50,mDeviceHieght - 50, true );
+        // set a background drawable with rounders corners
+        popWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.fb_popup_bg));
+        // make it focusable to show the keyboard to enter in `EditText`
+        popWindow.setFocusable(true);
+        // make it outside touchable to dismiss the popup window
+        popWindow.setOutsideTouchable(true);
+
+        // show the popup at bottom of the screen and set some margin at bottom ie,
+        popWindow.showAtLocation(v, Gravity.BOTTOM, 0,100);
+    }
+
+    void setSimpleList(ListView listView){
+
+        ArrayList<String> contactsList = new ArrayList<String>();
+
+        for (int index = 0; index < 10; index++) {
+            contactsList.add("I am @ index " + index + " today " + Calendar.getInstance().getTime().toString());
+        }
+
+        listView.setAdapter(new ArrayAdapter<String>(News_Detail.this,
+                R.layout.fb_comments_list_item, android.R.id.text1,contactsList));
     }
 
 }

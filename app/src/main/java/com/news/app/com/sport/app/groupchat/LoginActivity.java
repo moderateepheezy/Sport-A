@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.news.app.News_All;
 import com.news.app.R;
 import com.news.app.com.sport.app.utilities.Constant;
 import com.quickblox.auth.QBAuth;
@@ -41,7 +42,7 @@ public class LoginActivity extends ActionBarActivity {
 
     static final int AUTO_PRESENCE_INTERVAL_IN_SECONDS = 30;
 
-    private static QBUser user = null;
+    private QBUser user = null;
 
 
     private QBChatService chatService;
@@ -77,9 +78,9 @@ public class LoginActivity extends ActionBarActivity {
             @SuppressWarnings("deprecation")
             @Override
             public void onClick(View v) {
-              final String  usern = username.getText().toString();
+               final String usern = username.getText().toString();
 
-                 user = new QBUser(usern, Constant.PASSWORD);
+                final QBUser user = new QBUser(usern, Constant.PASSWORD);
                 QBAuth.createSession(new QBCallbackImpl() {
 
                     @Override
@@ -91,13 +92,14 @@ public class LoginActivity extends ActionBarActivity {
                                         QBUserResult qbUserResult = (QBUserResult) result;
                                         Log.d("Registration succesful", "user: "
                                                 + qbUserResult.getUser().toString());
-                                        Constant.USERNAME = usern;
                                         editor.putString("name", usern);
                                         editor.commit();
 
-                                        Intent i = new Intent(LoginActivity.this, DialogsActivity.class);
-                                        startActivity(i);
-                                        finish();
+                                       /*new MyAsyncClass().execute();*/
+                                        Intent intent = new Intent(LoginActivity.this, News_All.class);
+                                        //intent.putExtra("id", value);
+                                        startActivity(intent);
+                                        // finish();
                                     } else {
                                         Log.e("Errors", result.getErrors().toString());
                                         Toast.makeText(getApplicationContext(),
@@ -133,58 +135,6 @@ public class LoginActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private class MyAsyncClass extends AsyncTask<String, Void, String>{
-
-        ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = new ProgressDialog(getApplicationContext());
-            progressDialog.setMessage("Loading...");
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            QBAuth.createSession(user, new QBEntityCallbackImpl<QBSession>(){
-                @Override
-                public void onSuccess(QBSession session, Bundle args) {
-                    DataHolder.getDataHolder().setSignInQbUser(user);
-                    String x = DataHolder.getDataHolder().getSignInQbUser().getLogin().toString();
-                    Toast.makeText(getApplicationContext(), x, Toast.LENGTH_LONG).show();
-                    // save current user
-                    //
-                    user.setId(session.getUserId());
-                    //if(user.getId() == 1678050){
-                    //	value = 1678050;
-                    // }
-                    ((ApplicationSingleton)getApplication()).setCurrentUser(user);
-
-                    // login to Chat
-                    //getAllUser();
-                    //
-                    loginToChat(user);
-                }
-
-                @Override
-                public void onError(List<String> errors) {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
-                    dialog.setMessage("create session errors: " + errors).create().show();
-                }
-            });
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            progressDialog.dismiss();
-        }
     }
 
 }
